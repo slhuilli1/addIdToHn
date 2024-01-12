@@ -1,0 +1,11 @@
+<?php
+	defined('_JEXEC') or die('Access deny');
+
+	class plgContentAddIDToHn extends JPlugin 
+	{
+		function onContentPrepare($content, $article, $params, $limit){	
+				$re = '/\<h(.*)\>(.*<\/h.*>)/m';
+				$subst = '<h$1 class="titre-fiche-mat-niveau-$1">$2';
+				$article->text = preg_replace($re, $subst, $article->text);
+		}	
+	}
